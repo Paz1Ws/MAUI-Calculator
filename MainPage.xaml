@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:CodeBehind="crl-namespace:CalculatorApp"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+             x:Class="CalculatorApp.MainPage">
+  
+
+    <ContentPage.Resources>
+       
+        <ResourceDictionary>
+            <Color x:Key="buttonsColor">black</Color>
+            
+            <Style TargetType="Button" x:Key="operatorButton">
+                <Setter Property="WidthRequest" Value="50" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="BackgroundColor" Value="{StaticResource buttonsColor}" />
+                <Setter Property="TextColor" Value="Wheat" />
+                <Setter Property="TranslationX" Value="100" />
+                
+            </Style>
+            
+        </ResourceDictionary>
+        
+        <OnPlatform x:Key="textColor" x:TypeArguments="Color">
+            <On Platform="iOS" Value="Silver" />
+            <On Platform="Android" Value="Green" />
+            <On Platform="WinUI" Value="Yellow" />
+            <On Platform="MacCatalyst" Value="Pink" />
+        </OnPlatform>
+    </ContentPage.Resources>
+   
+    <Border
+        
+        Stroke="Transparent"
+        StrokeThickness="30"
+        StrokeShape="RoundRectangle 100"
+        HorizontalOptions="Center">
+        <Grid x:Name="MainGrid"  RowDefinitions="*,*" WidthRequest="450" HeightRequest="700" VerticalOptions="Center" HorizontalOptions="Center">
+            
+            <ScrollView Grid.Row="0" BackgroundColor="Wheat" >
+                <StackLayout>
+                    <Label  x:Name="SecondLabel" Text= "{Null}"
+                            BackgroundColor="Transparent" WidthRequest="300"
+                            HeightRequest="100" VerticalOptions="EndAndExpand"
+                            HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" FontSize="30" TextColor="Black"></Label>
+                    <Label x:Name="MainLabel"  Text= "0" TextColor="Black" TextTransform="Uppercase"
+                            BackgroundColor="Transparent" WidthRequest="330"
+                            HeightRequest="100" VerticalOptions="EndAndExpand"
+                            HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" FontSize="30"></Label>
+                </StackLayout>
+            </ScrollView>
+
+            <Grid
+                Grid.Row="1"
+                RowDefinitions="*,*,*,*,*"
+                ColumnDefinitions="35,45,35,35"
+                ColumnSpacing="32"
+                BackgroundColor="Khaki">
+                <Button Grid.Column="0" Grid.Row="0" Text="+" Clicked="Sum"  Style="{StaticResource operatorButton}" />
+                <Button Grid.Column="1" Grid.Row="0" Text="-" Clicked="Rest" Style="{StaticResource operatorButton}"  />
+                <Button Grid.Column="2" Grid.Row="0" Text="*" Clicked="Mult" Style="{StaticResource operatorButton}" />
+                <Button Grid.Column="3" Grid.Row="0" Text="/" Clicked="Div" Style="{StaticResource operatorButton}"  />
+
+
+                <Button Grid.Column="0" Grid.Row="1" Text="1" x:Name="_1" Clicked="asignValue" Style="{StaticResource operatorButton}" />
+                <Button Grid.Column="1" Grid.Row="1" Text="2" x:Name="_2" Clicked="asignValue" Style="{StaticResource operatorButton}"  />
+                <Button Grid.Column="2" Grid.Row="1" Text="3" x:Name="_3" Clicked="asignValue" Style="{StaticResource operatorButton}" />
+                <Button Grid.Column="0" Grid.Row="2" Text="4" x:Name="_4" Clicked="asignValue" Style="{StaticResource operatorButton}"  />
+                <Button Grid.Column="1" Grid.Row="2" Text="5" x:Name="_5" Clicked="asignValue" Style="{StaticResource operatorButton}" />
+                <Button Grid.Column="2" Grid.Row="2" Text="6" x:Name="_6" Clicked="asignValue" Style="{StaticResource operatorButton}"  />
+                <Button Grid.Column="0" Grid.Row="3" Text="7" x:Name="_7" Clicked="asignValue" Style="{StaticResource operatorButton}" />
+                <Button Grid.Column="1" Grid.Row="3" Text="8" x:Name="_8" Clicked="asignValue" Style="{StaticResource operatorButton}"  />
+                <Button Grid.Column="2" Grid.Row="3" Text="9" x:Name="_9" Clicked="asignValue" Style="{StaticResource operatorButton}"  />
+                <Button Grid.Column="1" Grid.Row="4" Text="0" x:Name="_0" Clicked="asignValue" Style="{StaticResource operatorButton}"  />
+
+
+                <Button Grid.Column="0" Grid.Row="4" Text=">" Clicked="Delete" class="OperatorB" Style="{StaticResource operatorButton}" />
+                <Button Grid.Column="3" Grid.Row="2" Text="C" Clicked="DeleteAll" HeightRequest="200"  Style="{StaticResource operatorButton}"  />
+                <Button Grid.Column="2" Grid.Row="4" Text="." Clicked="asignValue" Style="{StaticResource operatorButton}" />
+                <Button Grid.Column="3" Grid.Row="4" Text="="  Clicked="Result" Style="{StaticResource operatorButton}"  />
+            </Grid>
+                
+        </Grid>
+            
+    </Border>
+</ContentPage>

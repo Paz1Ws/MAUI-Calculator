@@ -1,0 +1,1 @@
+C:\Users\hp\Desktop\Prácticas\CalculatorApp\CalculatorApp.csproj;x64
